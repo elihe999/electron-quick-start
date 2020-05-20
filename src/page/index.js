@@ -1,14 +1,19 @@
 import React from 'react';
 
 import { DatePicker } from 'antd';
+import { Serialport } from 'serialport';
+
+
 
 const { MonthPicker, RangePicker, WeekPicker } = DatePicker;
-
-
 export default class IndexPage extends React.Component {
 
     onChange(date, dateString) {
         console.log(date, dateString);
+        Serialport.list().then(
+            ports => ports.forEach(console.log),
+            err => console.error(err)
+        )
     }
 
     render() {
